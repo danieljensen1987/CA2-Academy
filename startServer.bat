@@ -1,0 +1,1 @@
+java -cp MyRestCrud.jar myrestcrud.RestCrud 9191 localhost web/
