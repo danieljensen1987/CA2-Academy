@@ -7,9 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQueries({
+  @NamedQuery(name = "Roles.findAll", query = "SELECT r FROM RoleSchool r")
+  })
 public abstract class RoleSchool implements Serializable 
 {
     private static final long serialVersionUID = 1L;
