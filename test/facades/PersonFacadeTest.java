@@ -41,7 +41,10 @@ public class PersonFacadeTest {
 //        em.createNativeQuery("truncate table Teachers").executeUpdate();
 //        em.createNativeQuery("truncate table Students").executeUpdate();
 //        em.createNativeQuery("truncate table RoleSchool").executeUpdate();
-        em.createNativeQuery("delete from Persons").executeUpdate();
+//        em.createNativeQuery("delete from Teachers").executeUpdate();
+//        em.createNativeQuery("delete from Students").executeUpdate();
+//        em.createNativeQuery("delete from RoleSchools").executeUpdate();
+//        em.createNativeQuery("delete from Persons").executeUpdate();
         em.getTransaction().commit();
     }
 
@@ -102,15 +105,18 @@ public class PersonFacadeTest {
 
     @Test
     public void testAddRole() throws NotFoundException {
-
+        
         Person person = facade.addPerson(gson.toJson(new Person("Henrik", "Ørvald", "40474793", "hoe@gmail.com")));
-        RoleSchool role = new Teacher("Professor");
-        person.addRole(role);
+       
+        String strTeacher = "{'degree':'d-1', 'roleName':'Teacher'}";
+        String strStudent = "{'semester':'3rd-b', 'roleName':'Student'}";
+        String strAss = "{'roleName':'AssistantTeacher'}";
+        facade.addRole(strTeacher, person.getId());
+        facade.addRole(strStudent, person.getId());
+        facade.addRole(strAss, person.getId());
         String expected = gson.toJson(person);
         String actual = facade.getPerson(person.getId());
-        System.out.println("actual = " + actual);
-        System.out.println("expected = " + expected);
         assertEquals(expected, actual);
     }
-
+    
 }
