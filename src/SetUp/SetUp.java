@@ -15,6 +15,7 @@ public class SetUp
 
 public static void main(String[] args)
 {
+    facades.PersonFacadeDB db = new facades.PersonFacadeDB();
 EntityManagerFactory emf = Persistence.createEntityManagerFactory("KA2JPADB");
 EntityManager em = emf.createEntityManager();
 em.getTransaction().begin();
@@ -37,11 +38,16 @@ student.setPerson(p1);
 teacher.setPerson(p2);
 student2.setPerson(p2);
 
-List test = em.createNamedQuery("Person.findPersonsRoles").setParameter("id", p2).getResultList();
-System.out.println(test);
+    
+//System.out.println(test);
 
 em.getTransaction().commit();
 em.close();
+
+System.out.println(db.getRoles(p1));
+System.out.println(db.getRoles(p2));
+
+
 
 
 }
