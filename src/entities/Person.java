@@ -129,6 +129,7 @@ public String toString()
 {
 return "Person{" + "fName=" + fName
 + ", lName=" + lName
++ ", roles={" + roles + "}"
 + ", phone=" + phone
 + ", id=" + id
 + ", email=" + email + '}';

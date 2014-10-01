@@ -53,9 +53,9 @@ public abstract class RoleSchool implements Serializable {
         this.person = person;
     }
 
-    @Override
-    public String toString() {
-        return "entites.RoleSchool[ id=" + person + " ]";
-    }
+//    @Override
+//    public String toString() {
+//        return "entites.RoleSchool[ id=" + person + " ]";
+//    }
 
 }

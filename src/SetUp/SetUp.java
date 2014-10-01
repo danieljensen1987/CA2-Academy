@@ -13,7 +13,7 @@ import javax.persistence.Persistence;
 public class SetUp {
 
     public static void main(String[] args) {
-        facades.PersonFacadeDB db = new facades.PersonFacadeDB();
+//        facades.PersonFacadeDB db = new facades.PersonFacadeDB();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("KA2JPADB");
         EntityManager em = emf.createEntityManager();
         
@@ -34,9 +34,8 @@ public class SetUp {
         em.persist(p1);
         em.getTransaction().commit();
         em.close();
-
-        System.out.println(db.getRoles(p1));
-        System.out.println(db.getRoles(p2));
+        
+        System.out.println(p1.toString());
 
     }
 

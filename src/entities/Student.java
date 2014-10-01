@@ -11,29 +11,38 @@ import javax.persistence.Table;
 //@DiscriminatorValue("STUDENT")
 public class Student extends RoleSchool
 {
-private static final long serialVersionUID = 1L;
 
-@Basic(optional = false)
-@Column(name = "SEMESTER")
-private String semester;
+    private static final long serialVersionUID = 1L;
 
-public Student()
-{
-}
+    @Basic(optional = false)
+    @Column(name = "SEMESTER")
+    private String semester;
 
-public Student(String semester)
-{
-this.semester = semester;
-}
+    public Student()
+    {
+    }
 
-public String getSemester()
-{
-return semester;
-}
+    public Student(String semester)
+    {
+        this.semester = semester;
+    }
 
-public void setSemester(String semester)
-{
-this.semester = semester;
-}
+    public String getSemester()
+    {
+        return semester;
+    }
+
+    public void setSemester(String semester)
+    {
+        this.semester = semester;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "semester=" + semester + ", roleName=" + super.getRolename();
+    }
+    
+    
 
 }
