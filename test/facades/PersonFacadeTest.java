@@ -7,13 +7,11 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import model.Person;
+import entities.Person;
 import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class PersonFacadeTest
 {
@@ -32,7 +30,7 @@ public class PersonFacadeTest
     public void setUp()
     {
         facade = PersonFacadeDB.getFacade(true);
-        emf = Persistence.createEntityManagerFactory("cphdj74");
+        emf = Persistence.createEntityManagerFactory("KA2JPADB");
         em = emf.createEntityManager();
 
     }
@@ -42,7 +40,10 @@ public class PersonFacadeTest
     {
 
         em.getTransaction().begin();
-        em.createNativeQuery("truncate table person").executeUpdate();
+        em.createNativeQuery("truncate table Teachers").executeUpdate();
+        em.createNativeQuery("truncate table Students").executeUpdate();
+//        em.createNativeQuery("truncate table RoleSchool").executeUpdate();
+//        em.createNativeQuery("truncate table persons").executeUpdate();
         em.getTransaction().commit();
     }
 

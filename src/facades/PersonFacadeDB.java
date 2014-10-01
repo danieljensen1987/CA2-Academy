@@ -2,19 +2,18 @@ package facades;
 
 import com.google.gson.Gson;
 import exceptions.NotFoundException;
-import java.util.Collections;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import model.Person;
+import entities.Person;
 
 public class PersonFacadeDB implements IPersonFacade
 {
 
     private static PersonFacadeDB facade = new PersonFacadeDB();
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("cphdj74");
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("KA2JPADB");
     EntityManager em = emf.createEntityManager();
     private final Gson gson = new Gson();
 
@@ -29,6 +28,7 @@ public class PersonFacadeDB implements IPersonFacade
     @Override
     public Person addPerson(String json)
     {
+        System.out.println(json);
         Person person = gson.fromJson(json, Person.class);
         em.getTransaction().begin();
         em.persist(person);
@@ -82,6 +82,8 @@ public class PersonFacadeDB implements IPersonFacade
         Person newValue = em.find(Person.class, person.getId());
         return newValue;
     }
+    
+    
     
     public void createTestData() {
         addPerson(gson.toJson(new Person("Daniel", "Jensen", "20212021", "dj@cph.dk")));

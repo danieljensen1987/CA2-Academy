@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import exceptions.NotFoundException;
 import java.util.HashMap;
 import java.util.Map;
-import model.Person;
+import entities.Person;
 
 public class PersonFacade implements IPersonFacade
 {
@@ -39,7 +39,7 @@ public class PersonFacade implements IPersonFacade
     public Person addPerson(String json)
     {
         Person p = gson.fromJson(json, Person.class);
-        p.setId(nextId);
+//        p.setId(nextId);
         persons.put(nextId, p);
         nextId++;
         return p;

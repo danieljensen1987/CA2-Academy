@@ -1,7 +1,7 @@
 package facades;
 
 import exceptions.NotFoundException;
-import model.Person;
+import entities.Person;
 
 public interface IPersonFacade 
 {
