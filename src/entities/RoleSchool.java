@@ -16,68 +16,46 @@ import javax.persistence.Table;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "ROLESCHOOL")
-@DiscriminatorColumn(name = "ROLENAME")
-public abstract class RoleSchool implements Serializable
-{
-private static final long serialVersionUID = 1L;
+public abstract class RoleSchool implements Serializable {
 
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private Long id;
+    private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-@Column(name = "ROLENAME", nullable = false, length = 40)
-private String rolename;
+    @Column(name = "ROLENAME", nullable = false, length = 40)
+    private String rolename;
 
-@JoinColumn(name = "PERSON_ID")
-@ManyToOne(optional = false)
-private Person person;
+    private Person person;
 
-public RoleSchool()
-{
-}
+    public RoleSchool() {
+        rolename = this.getClass().getSimpleName();
+    }
 
-public RoleSchool(Long id)
-{
-this.id = id;
-}
+    public int getId() {
+        return id;
+    }
 
-public RoleSchool(Long id, String rolename)
-{
-this.id = id;
-this.rolename = rolename;
-}
+    public String getRolename() {
+        return rolename;
+    }
 
-public Long getId()
-{
-return id;
-}
+    public void setRolename(String rolename) {
+        this.rolename = rolename;
+    }
 
-public String getRolename()
-{
-return rolename;
-}
+    public Person getPerson() {
+        return person;
+    }
 
-public void setRolename(String rolename)
-{
-this.rolename = rolename;
-}
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
-public Person getPerson()
-{
-return person;
-}
-
-public void setPerson(Person person)
-{
-this.person = person;
-}
-
-
-@Override
-public String toString()
-{
-return "entites.RoleSchool[ id=" + person + " ]";
-}
+    @Override
+    public String toString() {
+        return "entites.RoleSchool[ id=" + person + " ]";
+    }
 
 }
