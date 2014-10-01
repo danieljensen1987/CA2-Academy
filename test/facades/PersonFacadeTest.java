@@ -40,10 +40,10 @@ public class PersonFacadeTest
     {
 
         em.getTransaction().begin();
-        em.createNativeQuery("truncate table Teachers").executeUpdate();
-        em.createNativeQuery("truncate table Students").executeUpdate();
+//        em.createNativeQuery("truncate table Teachers").executeUpdate();
+//        em.createNativeQuery("truncate table Students").executeUpdate();
 //        em.createNativeQuery("truncate table RoleSchool").executeUpdate();
-//        em.createNativeQuery("truncate table persons").executeUpdate();
+        em.createNativeQuery("delete from Persons").executeUpdate();
         em.getTransaction().commit();
     }
 
