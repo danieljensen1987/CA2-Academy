@@ -3,6 +3,7 @@ package facades;
 import com.google.gson.Gson;
 import entities.Person;
 import entities.RoleSchool;
+import entities.Teacher;
 import exceptions.NotFoundException;
 import java.util.HashMap;
 import java.util.Map;
@@ -98,14 +99,18 @@ public class PersonFacadeTest {
         assertEquals(changed, newValue);
         assertNotSame(original, newValue);
     }
-//
-//    @Test
-//    public void testAddRole() throws NotFoundException {
-//        
-//        Person person = facade.addPerson(gson.toJson(new Person("Henrik", "Ørvald", "40474793", "hoe@gmail.com")));
-//        facade.addRole(gson.toJson(RoleSchool("Teacher")));
-//        String expected = gson.toJson(person);
-//        String actual = facade.getPerson(person.getId());
-//        assertEquals(expected, actual);
-//    }
+
+    @Test
+    public void testAddRole() throws NotFoundException {
+
+        Person person = facade.addPerson(gson.toJson(new Person("Henrik", "Ørvald", "40474793", "hoe@gmail.com")));
+        RoleSchool role = new Teacher("Professor");
+        person.addRole(role);
+        String expected = gson.toJson(person);
+        String actual = facade.getPerson(person.getId());
+        System.out.println("actual = " + actual);
+        System.out.println("expected = " + expected);
+        assertEquals(expected, actual);
+    }
+
 }
