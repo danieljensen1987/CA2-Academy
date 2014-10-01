@@ -1,12 +1,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -41,13 +44,16 @@ private String phone;
 @Column(name = "EMAIL", unique = true , nullable = false, length = 40)
 private String email;
 
-@OneToMany(mappedBy = "person")
-private Collection<RoleSchool> roles;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Collection<RoleSchool> roles = new ArrayList();
 
 public Person()
 {
 }
-
+public void addRole(RoleSchool role){
+    roles.add(role);
+}
 public Person(int id)
 {
 this.id = id;

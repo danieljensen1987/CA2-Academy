@@ -94,16 +94,10 @@ public class PersonFacadeDB implements IPersonFacade
     
     public RoleSchool addRole(String json, int id){
         Person person = em.find(Person.class, id);
-        
-    switch(role.toUpperCase()){
-        case "TEACHER":
-               RoleSchool teatcher = new Teacher(desciption);
-               teatcher.setPerson(person);
-                return teatcher;
-            
+        RoleSchool role = gson.fromJson(json, RoleSchool.class);
+        role.setPerson(person);
+        return role;
            
-    }
-    
     }
     
     
