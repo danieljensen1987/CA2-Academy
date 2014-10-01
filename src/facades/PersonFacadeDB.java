@@ -2,6 +2,8 @@ package facades;
 
 import com.google.gson.Gson;
 import entities.Person;
+import entities.RoleSchool;
+import entities.Teacher;
 import exceptions.NotFoundException;
 import java.util.Collections;
 import java.util.List;
@@ -84,8 +86,24 @@ public class PersonFacadeDB implements IPersonFacade
         return newValue;
     }
     
-    public String getRoles(String id){
+    public String getRoles(Person person){
+      List roleList = em.createQuery("SELECT s.rolename FROM RoleSchool s WHERE s.person = :id").setParameter("id", person).getResultList();
+      String roles = roleList.toString();
+      return roles;
+    }
+    
+    public RoleSchool addRole(String json, int id){
+        Person person = em.find(Person.class, id);
         
+    switch(role.toUpperCase()){
+        case "TEACHER":
+               RoleSchool teatcher = new Teacher(desciption);
+               teatcher.setPerson(person);
+                return teatcher;
+            
+           
+    }
+    
     }
     
     

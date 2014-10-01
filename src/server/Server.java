@@ -10,7 +10,7 @@ public class Server
 {
     static int port = 9191;
     static String ip = "localhost";
-    static String publicFolder = "src/htmlfiles/";
+    static String publicFolder = "web/";
     static String startFile = "index.html";
 //    static String filesUri = "/pages";
     
