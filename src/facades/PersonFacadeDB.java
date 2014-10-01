@@ -1,13 +1,14 @@
 package facades;
 
 import com.google.gson.Gson;
+import entities.Person;
 import exceptions.NotFoundException;
+import java.util.Collections;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import entities.Person;
 
 public class PersonFacadeDB implements IPersonFacade
 {
@@ -64,7 +65,7 @@ public class PersonFacadeDB implements IPersonFacade
     {
         Query q = em.createQuery("SELECT p FROM Person p");
         List persons = q.getResultList();
-//        Collections.reverse(persons);
+        Collections.reverse(persons);
         return gson.toJson(persons);
     }
 
@@ -81,6 +82,10 @@ public class PersonFacadeDB implements IPersonFacade
         em.getTransaction().commit();
         Person newValue = em.find(Person.class, person.getId());
         return newValue;
+    }
+    
+    public String getRoles(String id){
+        
     }
     
     
