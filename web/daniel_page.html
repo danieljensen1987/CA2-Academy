@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.js"></script>
+        <script src="daniel_page.js"></script>
+        <style>
+            fieldset {width: 28em}
+            label {display: inline-block; float: left; width: 6.9em;}
+            input {width: 16.1em}
+            button {width: 8em}
+            #id {width: 7.8em}
+            select {width: 8em; height: 1.6em}
+            #discription {width: 7.8em;}
+        </style>
+    </head>
+    <body>
+        <fieldset id="details">
+            <legend>Person details</legend>
+
+            <div><label>ID</label><input id="id" type="text" placeholder="ID" size="6">
+                <button id="btn_getPerson">Get Person</button></div>
+            <div><label>First Name</label><input id="fname" type="text" placeholder="First name"></div>
+            <div><label>Last Name</label><input id="lname" type="text" placeholder="Last name"></div>
+            <div><label>Phone</label><input id="phone" type="text" placeholder="Phone"></div>
+            <div><label>Email</label><input id="email" type="text" placeholder="Email"></div>
+
+            <button id="btn_addPerson">Add Person</button>
+            <button id="btn_updatePerson">Update Person</button>
+            <button id="btn_deletePerson">Delete Person</button>
+            <button id="btn_clear">Clear Fields</button>
+
+        </fieldset>
+        
+        <fieldset>
+            <legend>Person roles</legend>
+            <div id="roles"></div>
+            <div>
+                <label>New Role</label>
+                <select id="select_role">
+                    <option id="srole" value="Student">Student</option>
+                    <option id="trole" value="Teacher">Teacher</option>
+                    <option id="arole" value="AssitantTeacher">Ass. Teacher</option>
+                </select>
+                <input id="discription">
+                <button id="btn_addRole">Add Role</button>
+            </div>
+        </fieldset>
+        
+        <div><label id="status"></label></div>
+    </body>
+</html>
