@@ -19,7 +19,7 @@ public class PersonHandler implements HttpHandler
     PersonFacadeDB facade;
     private static final boolean devolpment = true;
 
-    public PersonHandler()
+    public PersonHandler() throws NotFoundException
     {
         facade = PersonFacadeDB.getFacade(false);
         if (devolpment) {
@@ -63,16 +63,7 @@ public class PersonHandler implements HttpHandler
                     BufferedReader br = new BufferedReader(isr);
                     String jsonQuery = br.readLine();
 
-                    if (jsonQuery.contains("<") || jsonQuery.contains(">")) {
-                        throw new IllegalArgumentException("No hacking please");
-                    }
-
                     Person person = facade.addPerson(jsonQuery);
-                    if (person.getPhone().length() > 50
-                            || person.getfName().length() > 50
-                            || person.getlName().length() > 70) {
-                        throw new IllegalArgumentException("Input contains to many characters");
-                    }
 
                     response = new Gson().toJson(person);
                 } catch (IllegalArgumentException iae) {
@@ -101,7 +92,7 @@ public class PersonHandler implements HttpHandler
                         if (newValues.contains("<") || newValues.contains(">")) {
                             throw new IllegalArgumentException("No hacking please");
                         }
-                        
+
                         CharSequence subOriginal = original.subSequence(0, 11);
                         CharSequence subNewValues = newValues.subSequence(1, newValues.length());
                         String changed = "" + subOriginal + subNewValues;
