@@ -5,9 +5,9 @@ import entities.Person;
 
 public interface IPersonFacade 
 {
-    public Person addPerson(String json);
-    public Person deletePerson(int id) throws NotFoundException;
-    public String getPerson(int id) throws NotFoundException;
-    public String getPersons();
+    public Person addPersonFromGson(String json);
+    public Person delete(int id) throws NotFoundException;
+    public String getPersonAsJson(int id) throws NotFoundException;
+    public String getPersonsAsJSON();
     public Person editPerson(String json) throws NotFoundException;
 }

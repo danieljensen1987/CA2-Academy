@@ -36,7 +36,7 @@ public class PersonFacadeDB implements IPersonFacade
     }
 
     @Override
-    public Person addPerson(String json)
+    public Person addPersonFromGson(String json)
     {
         try (ClosableManager em = new ClosableManager(emf)) {
 
@@ -49,7 +49,7 @@ public class PersonFacadeDB implements IPersonFacade
     }
 
     @Override
-    public Person deletePerson(int id) throws NotFoundException
+    public Person delete(int id) throws NotFoundException
     {
         try (ClosableManager em = new ClosableManager(emf)) {
             Person person = em.find(Person.class, id);
@@ -64,7 +64,7 @@ public class PersonFacadeDB implements IPersonFacade
     }
 
     @Override
-    public String getPerson(int id) throws NotFoundException
+    public String getPersonAsJson(int id) throws NotFoundException
     {
         try (ClosableManager em = new ClosableManager(emf)) {
             Person person = em.find(Person.class, id);
@@ -76,7 +76,7 @@ public class PersonFacadeDB implements IPersonFacade
     }
 
     @Override
-    public String getPersons()
+    public String getPersonsAsJSON()
     {
         try (ClosableManager em = new ClosableManager(emf)) {
             Query q = em.createQuery("SELECT p FROM Person p");
@@ -103,7 +103,7 @@ public class PersonFacadeDB implements IPersonFacade
         }
     }
 
-    public RoleSchool addRole(String json, int id) throws NotFoundException
+    public RoleSchool addRoleFromGson(String json, int id) throws NotFoundException
     {
         try (ClosableManager em = new ClosableManager(emf)) {
             Person person = em.find(Person.class, id);
@@ -143,23 +143,23 @@ public class PersonFacadeDB implements IPersonFacade
 
     public void createTestData() throws NotFoundException
     {
-        addPerson(gson.toJson(new Person("Daniel", "Jensen", "20212021", "dj@cph.dk")));
-        addRole("{'discription':'3rd-b', 'roleName':'Student'}", 1000);
-        addRole("{'roleName':'AssistantTeacher'}", 1000);
-        addPerson(gson.toJson(new Person("David", "Worblewski", "10111011", "dw@cph.dk")));
-        addPerson(gson.toJson(new Person("Henrik", "Ørvald", "30313031", "hoe@cph.dk")));
-        addPerson(gson.toJson(new Person("Tobias", "Hansen", "40414041", "th@cph.dk")));
-        addPerson(gson.toJson(new Person("Martin", "Weber", "50515051", "mw@cph.dk")));
-        addPerson(gson.toJson(new Person("Lars", "Mortensen", "60616061", "lam@cph.dk")));
-        addRole("{'discription':'BCS', 'roleName':'Teacher'}", 1005);
-        addRole("{'discription':'3rd-b', 'roleName':'Student'}", 1005);
-        addPerson(gson.toJson(new Person("Anders", "Kalhauge", "70717071", "aka@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("Daniel", "Jensen", "20212021", "dj@cph.dk")));
+        addRoleFromGson("{'discription':'3rd-b', 'roleName':'Student'}", 1000);
+        addRoleFromGson("{'roleName':'AssistantTeacher'}", 1000);
+        addPersonFromGson(gson.toJson(new Person("David", "Worblewski", "10111011", "dw@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("Henrik", "Ørvald", "30313031", "hoe@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("Tobias", "Hansen", "40414041", "th@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("Martin", "Weber", "50515051", "mw@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("Lars", "Mortensen", "60616061", "lam@cph.dk")));
+        addRoleFromGson("{'discription':'BCS', 'roleName':'Teacher'}", 1005);
+        addRoleFromGson("{'discription':'3rd-b', 'roleName':'Student'}", 1005);
+        addPersonFromGson(gson.toJson(new Person("Anders", "Kalhauge", "70717071", "aka@cph.dk")));
     }
 
     public void test()
     {
         String str = "{'degree':'d-1', 'roleName':'Teacher'}";
-        // addRole(str, 1);
+        // addRoleFromGson(str, 1);
 
     }
 

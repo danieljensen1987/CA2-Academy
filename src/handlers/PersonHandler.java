@@ -43,9 +43,9 @@ public class PersonHandler implements HttpHandler
                     if (lastIndexOf > 0) {
                         String idString = path.substring(lastIndexOf + 1);
                         int id = Integer.parseInt(idString);
-                        response = facade.getPerson(id);
+                        response = facade.getPersonAsJson(id);
                     } else {
-                        response = facade.getPersons();
+                        response = facade.getPersonsAsJSON();
                     }
 
                 } catch (NumberFormatException nufe) {
@@ -63,7 +63,7 @@ public class PersonHandler implements HttpHandler
                     BufferedReader br = new BufferedReader(isr);
                     String jsonQuery = br.readLine();
 
-                    Person person = facade.addPerson(jsonQuery);
+                    Person person = facade.addPersonFromGson(jsonQuery);
 
                     response = new Gson().toJson(person);
                 } catch (IllegalArgumentException iae) {
@@ -121,7 +121,7 @@ public class PersonHandler implements HttpHandler
 
                     if (lastIndexOf > 0) {
                         int id = Integer.parseInt(path.substring(lastIndexOf + 1));
-                        Person deleted = facade.deletePerson(id);
+                        Person deleted = facade.delete(id);
                         response = new Gson().toJson(deleted);
                     } else {
                         statusCode = 400;

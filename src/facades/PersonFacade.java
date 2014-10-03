@@ -28,15 +28,15 @@ public class PersonFacade implements IPersonFacade
 
     public void createTestData()
     {
-        addPerson(gson.toJson(new Person("Daniel", "Jensen", "20212021", "dj@cph.dk")));
-        addPerson(gson.toJson(new Person("David", "Worblewski", "10111011", "dw@cph.dk")));
-        addPerson(gson.toJson(new Person("Henrik", "Ørvald", "30313031", "hoe@cph.dk")));
-        addPerson(gson.toJson(new Person("Tobias", "Hansen", "40414041", "th@cph.dk")));
-        addPerson(gson.toJson(new Person("Martin", "Weber", "50515051", "mw@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("Daniel", "Jensen", "20212021", "dj@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("David", "Worblewski", "10111011", "dw@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("Henrik", "Ørvald", "30313031", "hoe@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("Tobias", "Hansen", "40414041", "th@cph.dk")));
+        addPersonFromGson(gson.toJson(new Person("Martin", "Weber", "50515051", "mw@cph.dk")));
     }
 
     @Override
-    public Person addPerson(String json)
+    public Person addPersonFromGson(String json)
     {
         Person p = gson.fromJson(json, Person.class);
 //        p.setId(nextId);
@@ -46,7 +46,7 @@ public class PersonFacade implements IPersonFacade
     }
 
     @Override
-    public Person deletePerson(int id) throws NotFoundException
+    public Person delete(int id) throws NotFoundException
     {
         Person p = persons.remove(id);
         if (p == null) {
@@ -56,7 +56,7 @@ public class PersonFacade implements IPersonFacade
     }
 
     @Override
-    public String getPerson(int id) throws NotFoundException
+    public String getPersonAsJson(int id) throws NotFoundException
     {
         Person p = persons.get(id);
         if (p == null) {
@@ -66,7 +66,7 @@ public class PersonFacade implements IPersonFacade
     }
 
     @Override
-    public String getPersons()
+    public String getPersonsAsJSON()
     {
         if (persons.isEmpty()) {
             return null;

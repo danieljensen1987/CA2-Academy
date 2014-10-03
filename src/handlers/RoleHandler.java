@@ -48,7 +48,7 @@ public class RoleHandler implements HttpHandler
                     JsonObject jobject = jelement.getAsJsonObject();
                     int id = Integer.parseInt(jobject.get("id").getAsString());
                     
-                    RoleSchool role = facade.addRole(jsonQuery, id);
+                    RoleSchool role = facade.addRoleFromGson(jsonQuery, id);
                     response = new Gson().toJson(role);
                     
                 } catch (IllegalArgumentException iae) {
