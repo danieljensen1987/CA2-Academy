@@ -17,7 +17,7 @@ public class PersonHandler implements HttpHandler
 
 //    PersonFacade facade;
     PersonFacadeDB facade;
-    private static final boolean devolpment = true;
+    private static final boolean devolpment = false;
 
     public PersonHandler() throws NotFoundException
     {
