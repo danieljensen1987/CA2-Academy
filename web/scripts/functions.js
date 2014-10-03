@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    getAllPersons();
     initGetPersonBtn();
     initClearBtn();
     initDisableDiscriptionBtn();
@@ -6,7 +7,22 @@ $(document).ready(function () {
     initDeletePersonBtn();
     initUpdateBtn();
     initAddRoleBtn();
+    initPersons();
 });
+
+function getAllPersons() {
+        $.ajax({
+          url: "../person",
+          type: "GET",
+          dataType: 'json'
+        }).done(function(persons) {
+          var options = "";
+          persons.forEach(function(person) {
+            options += "<option id=" + person.id + ">" + person.id + ": " + person.fName + " " + person.lName + "</option>";
+          });
+          $("#persons").html(options);
+        });
+      }
 
 function initGetPersonBtn() {
     $("#btn_getPerson").click(function () {
@@ -102,6 +118,7 @@ function initAddPersonBtn() {
             dataType: 'json'
         }).done(function (newPerson) {
             $("#id").val(newPerson.id);
+            getAllPersons();
         }).fail(function () {
             $("#status").val("Email already exist");
         });
@@ -116,6 +133,7 @@ function initDeletePersonBtn() {
             type: "DELETE",
             dataType: 'json'
         }).done(function () {
+            getAllPersons();
             $("#status").val("Person " + id + " is deleted");
         });
     });
@@ -156,3 +174,13 @@ function initAddRoleBtn() {
         });
     });
 }
+
+function initPersons(){
+        $("#persons").click(function(e) {
+          var id = e.target.id;
+          if (isNaN(id)) {
+            return;
+          }
+          getDetails(id);
+        });
+      }

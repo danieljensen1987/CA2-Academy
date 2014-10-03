@@ -10,6 +10,9 @@
         <style>
             fieldset {width: 28em}
             label {display: inline-block; float: left; width: 6.9em;}
+            #all_persons {display: inline-block; float: left; width: 6.9em;}
+            #one_person {display: inline-block; float: left; width: 6.9em; padding-right: 24em; border: none}
+
             input {width: 16.1em}
             button {width: 8em}
             #id {width: 7.8em}
@@ -18,37 +21,48 @@
         </style>
     </head>
     <body>
-        <fieldset id="details">
-            <legend>Person details</legend>
+        <div id="one_person">
+            <fieldset id="details">
+                <legend>Person details</legend>
 
-            <div><label>ID</label><input id="id"  type="text" placeholder="ID" size="6">
-                <button id="btn_getPerson">Get Person</button><div id="div_id"></div></div>
-            <div><label>First Name</label><input id="fname" type="text" placeholder="First name"></div>
-            <div><label>Last Name</label><input id="lname" type="text" placeholder="Last name"></div>
-            <div><label>Phone</label><input id="phone" type="text" placeholder="Phone"></div>
-            <div><label>Email</label><input id="email" type="text" placeholder="Email"></div>
+                <div><label>ID</label><input id="id"  type="text" placeholder="ID" size="6">
+                    <button id="btn_getPerson">Get Person</button><div id="div_id"></div></div>
+                <div><label>First Name</label><input id="fname" type="text" placeholder="First name"></div>
+                <div><label>Last Name</label><input id="lname" type="text" placeholder="Last name"></div>
+                <div><label>Phone</label><input id="phone" type="text" placeholder="Phone"></div>
+                <div><label>Email</label><input id="email" type="text" placeholder="Email"></div>
 
-            <button id="btn_addPerson">Add Person</button>
-            <button id="btn_updatePerson">Update Person</button>
-            <button id="btn_deletePerson">Delete Person</button>
-            <button id="btn_clear">Clear Fields</button>
+                <button id="btn_addPerson">Add Person</button>
+                <button id="btn_updatePerson">Update Person</button>
+                <button id="btn_deletePerson">Delete Person</button>
+                <button id="btn_clear">Clear Fields</button>
 
-        </fieldset>
+            </fieldset>
 
-        <fieldset>
-            <legend>Person roles</legend>
-            <div id="roles"></div>
-            <div>
-                <label>New Role</label>
-                <select id="select_role">
-                    <option id="srole" value="Student">Student</option>
-                    <option id="trole" value="Teacher">Teacher</option>
-                    <option id="arole" value="AssitantTeacher">Ass. Teacher</option>
+            <fieldset>
+                <legend>Person roles</legend>
+                <div id="roles"></div>
+                <div>
+                    <label>New Role</label>
+                    <select id="select_role">
+                        <option id="srole" value="Student">Student</option>
+                        <option id="trole" value="Teacher">Teacher</option>
+                        <option id="arole" value="AssitantTeacher">Ass. Teacher</option>
+                    </select>
+                    <input id="discription">
+                    <button id="btn_addRole">Add Role</button>
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset  id="all_persons">
+                <legend>All Persons</legend>
+                <select id="persons" size="2" style="min-width: 15em;height: 15.8em;">
                 </select>
-                <input id="discription">
-                <button id="btn_addRole">Add Role</button>
-            </div>
-        </fieldset>
+            </fieldset>
+        </div>
+
 
         <div><label id="status"></label></div>
     </body>
