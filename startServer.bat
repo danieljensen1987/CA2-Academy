@@ -1,1 +1,1 @@
-java -cp MyRestCrud.jar myrestcrud.RestCrud 9191 localhost web/
+java -cp CA2-Academy.jar server.Server 9191 localhost web/
