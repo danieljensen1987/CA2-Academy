@@ -111,7 +111,6 @@ public class PersonFacadeDB implements IPersonFacade
             JsonElement jelement = new JsonParser().parse(json);
             JsonObject jobject = jelement.getAsJsonObject();
             String roleName = jobject.get("roleName").getAsString();
-            System.out.println("roleName = " + roleName);
             switch (roleName.toUpperCase()) {
 
                 case "TEACHER":

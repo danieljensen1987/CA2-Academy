@@ -37,15 +37,15 @@ public class PersonFacadeTest {
     @After
     public void tearDown() {
 
-        em.getTransaction().begin();
-//        em.createNativeQuery("truncate table Teachers").executeUpdate();
-//        em.createNativeQuery("truncate table Students").executeUpdate();
-//        em.createNativeQuery("truncate table RoleSchool").executeUpdate();
-//        em.createNativeQuery("delete from Teachers").executeUpdate();
-//        em.createNativeQuery("delete from Students").executeUpdate();
-//        em.createNativeQuery("delete from RoleSchools").executeUpdate();
-//        em.createNativeQuery("delete from Persons").executeUpdate();
-        em.getTransaction().commit();
+//        em.getTransaction().begin();
+////        em.createNativeQuery("truncate table Teachers").executeUpdate();
+////        em.createNativeQuery("truncate table Students").executeUpdate();
+////        em.createNativeQuery("truncate table RoleSchool").executeUpdate();
+////        em.createNativeQuery("delete from Teachers").executeUpdate();
+////        em.createNativeQuery("delete from Students").executeUpdate();
+////        em.createNativeQuery("delete from RoleSchools").executeUpdate();
+////        em.createNativeQuery("delete from Persons").executeUpdate();
+//        em.getTransaction().commit();
     }
 
     @Test

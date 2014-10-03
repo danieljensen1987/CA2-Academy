@@ -83,17 +83,16 @@ public class PersonHandler implements HttpHandler
                     if (lastIndexOf > 0) {
                         String idString = path.substring(lastIndexOf + 1);
                         int id = Integer.parseInt(idString);
-                        String original = facade.getPerson(id);
 
                         InputStreamReader isr = new InputStreamReader(he.getRequestBody(), "utf-8");
                         BufferedReader br = new BufferedReader(isr);
                         String newValues = br.readLine();
-
+                        //Anti Hacker metoden givet af lars
                         if (newValues.contains("<") || newValues.contains(">")) {
                             throw new IllegalArgumentException("No hacking please");
                         }
 
-                        CharSequence subOriginal = original.subSequence(0, 11);
+                        CharSequence subOriginal = "{id:'" + id + "',";
                         CharSequence subNewValues = newValues.subSequence(1, newValues.length());
                         String changed = "" + subOriginal + subNewValues;
 

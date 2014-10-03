@@ -17,6 +17,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.metamodel.Metamodel;
 
+//Denne klasse er givet af Anders for at gøre EntityManager Closeable
+
 public class ClosableManager implements EntityManager, AutoCloseable {
     private EntityManager em;
     
