@@ -1,39 +1,56 @@
-    <!DOCTYPE html>
-
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>REST CRUD Exercise</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.js"></script>
-    <script src="scripts/script.js"></script>
-  </head>
-  <body>
-    <div id="outer">
-      <div id="header">REST CRUD Exercise</div>
-      <div id="all_persons">
-        <select id="persons" size="2" style="min-width: 150px;height: 200px;">
-        </select>
-        <div>
-          <button id="delete">Delete Selected</button>
-        </div>
-      </div>
-      <div id="details">
-        <div><label>id</label><input id="id" disabled="disabled" type="text"/></div>
-        <div><label>First Name</label><input id="fname" disabled="disabled" type="text"/></div>
-        <div><label>Last Name</label><input id="lname" disabled="disabled" type="text"/></div>
-        <div><label>Phone</label><input id="phone" disabled="disabled" type="text"/></div>
-        <div><label>Email</label><input id="email" disabled="disabled" type="text"/></div>
-      </div>
-      <div>
-        <button id="btn_add">Add Person</button>
-        <button id="btn_save" disabled="disabled">Save Person</button>
-        <button id="btn_edit">Edit Person</button>
-        <button id="btn_update" disabled="disabled">Update Person</button>
-        <button id="btn_cancel" disabled="disabled">Cancel</button>
-      </div>
-      <p>TODO: Add the edit functionality </p>
-    </div>
-  </body>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.js"></script>
+        <script src="scripts/functions.js"></script>
+        <script src="scripts/validate.js"></script>
+        <script src="scripts/ValidationRules.js"></script>
+        <style>
+            fieldset {width: 28em}
+            label {display: inline-block; float: left; width: 6.9em;}
+            input {width: 16.1em}
+            button {width: 8em}
+            #id {width: 7.8em}
+            select {width: 8em; height: 1.6em}
+            #discription {width: 7.8em;}
+        </style>
+    </head>
+    <body>
+        <fieldset id="details">
+            <legend>Person details</legend>
+
+            <div><label for="id">ID</label><input id="id"  type="text" placeholder="ID" size="6">
+                <button id="btn_getPerson">Get Person</button></div>
+            <div><label for="fname">First Name</label><input id="fname" type="text" placeholder="First name"></div>
+            <div><label>Last Name</label><input id="lname" type="text" placeholder="Last name"></div>
+            <div><label>Phone</label><input id="phone" type="text" placeholder="Phone"></div>
+            <div><label>Email</label><input id="email" type="text" placeholder="Email"></div>
+
+            <button id="btn_addPerson">Add Person</button>
+            <button id="btn_updatePerson">Update Person</button>
+            <button id="btn_deletePerson">Delete Person</button>
+            <button id="btn_clear">Clear Fields</button>
+
+        </fieldset>
+        
+        <fieldset>
+            <legend>Person roles</legend>
+            <div id="roles"></div>
+            <div>
+                <label>New Role</label>
+                <select id="select_role">
+                    <option id="srole" value="Student">Student</option>
+                    <option id="trole" value="Teacher">Teacher</option>
+                    <option id="arole" value="AssitantTeacher">Ass. Teacher</option>
+                </select>
+                <input id="discription">
+                <button id="btn_addRole">Add Role</button>
+            </div>
+        </fieldset>
+        
+        <div><label id="status"></label></div>
+    </body>
 </html>
